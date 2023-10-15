@@ -54,7 +54,17 @@ bool solved;
  * @param postfixExpressionLength Ukazatel na aktuální délku výsledného postfixového výrazu
  */
 void untilLeftPar( Stack *stack, char *postfixExpression, unsigned *postfixExpressionLength ) {
-	solved = false; /* V případě řešení, smažte tento řádek! */
+	if (Stack_IsEmpty(&stack)) {
+		return 0;
+	}
+	char topChar = ')';
+	Stack_Pop(&stack);
+	while (topChar != '(')
+	{
+		Stack_Top(&stack, &topChar);
+
+		Stack_Pop(&stack);
+	}
 }
 
 /**
@@ -74,7 +84,30 @@ void untilLeftPar( Stack *stack, char *postfixExpression, unsigned *postfixExpre
  * @param postfixExpressionLength Ukazatel na aktuální délku výsledného postfixového výrazu
  */
 void doOperation( Stack *stack, char c, char *postfixExpression, unsigned *postfixExpressionLength ) {
-	solved = false; /* V případě řešení, smažte tento řádek! */
+	char topChar;
+	bool topCharPrio = false, currCharPrio = false;
+	Stack_Top(&stack, &topChar);
+	if (topChar == '*' || topChar == '/') {
+		topCharPrio = true;
+	}
+	if (c == '*' || c == '/') {
+		currCharPrio = true;
+	}
+	while (!(Stack_IsEmpty(&stack) || topChar == '(' || currCharPrio > topCharPrio))
+	{
+		postfixExpression[*postfixExpressionLength] = topChar;
+		*postfixExpressionLength++;
+		Stack_Pop(&stack);
+
+		Stack_Top(&stack, &topChar);
+		if (topChar == '*' || topChar == '/') {
+			topCharPrio = true;
+		}
+		else {
+			topCharPrio = false;
+		}
+	}
+	Stack_Push(&stack, c);
 }
 
 /**
@@ -126,8 +159,36 @@ void doOperation( Stack *stack, char c, char *postfixExpression, unsigned *postf
  * @returns znakový řetězec obsahující výsledný postfixový výraz
  */
 char *infix2postfix( const char *infixExpression ) {
-	solved = false; /* V případě řešení, smažte tento řádek! */
-	return NULL;
+	int i = 0, postfixExpressionLen = 0;
+	Stack stack;
+	Stack_Init(&stack);
+	char *postfixExpression = (char *)malloc(MAX_LEN * sizeof(char));	//Alokace pameti pro vystupny retezec
+	
+	if (postfixExpression == NULL) {
+		return NULL;
+	}
+
+	//While cyklus pro iteraci skrze vstupni retezec
+	while (infixExpression[i] != NULL) {
+		char currChar = infixExpression[i];
+		//If statement rozhoduje o dalsim postupu prevodu dle aktualniho znaku na vstupu, viz. studijni opora str. 61
+		if (currChar == '+' || currChar == '-' || currChar == '*' || currChar == '/') {
+			doOperation(&stack, currChar, postfixExpression, &postfixExpressionLen);
+		}
+		else if (currChar == '(') {
+			Stack_Push(&stack, '(');
+		}
+		else if ((currChar >= '0' && currChar <= '9') || (currChar >= 'a' && currChar <= 'z') || (currChar >= 'A' && currChar <= 'Z')) {
+			postfixExpression[postfixExpressionLen] = currChar;
+			postfixExpressionLen++;
+		}
+		else if (currChar == ')') {
+			untilLeftPar(&stack, postfixExpression, &postfixExpressionLen);
+		}
+		else if (currChar == '=') {
+
+		}
+	}	
 }
 
 
@@ -143,7 +204,11 @@ char *infix2postfix( const char *infixExpression ) {
  * @param value hodnota k vložení na zásobník
  */
 void expr_value_push( Stack *stack, int value ) {
-	solved = false; /* V případě řešení, smažte tento řádek! */
+	//Pomoci bitovych posunu rozdeli int na 4 chary, ktere umisti za sebou na vrchol zasobniku v poradi od MSB po LSB
+	Stack_Push(stack, (char)((value >> 24) & 0xFF));
+	Stack_Push(stack, (char)((value >> 16) & 0xFF));
+	Stack_Push(stack, (char)((value >> 8) & 0xFF));
+	Stack_Push(stack, (char)(value & 0xFF));
 }
 
 /**
@@ -159,8 +224,17 @@ void expr_value_push( Stack *stack, int value ) {
  *   výsledné celočíselné hodnoty z vrcholu zásobníku
  */
 void expr_value_pop( Stack *stack, int *value ) {
-	solved = false; /* V případě řešení, smažte tento řádek! */
-	*value = 0;
+	char charArray[4];
+	
+	for (int i = 0; i < 4; i++) {
+		Stack_Top(stack, charArray[i]);
+		Stack_Pop(stack);
+	}
+
+	*value = ((unsigned char)charArray[0] << 24) |
+             ((unsigned char)charArray[1] << 16) |
+             ((unsigned char)charArray[2] << 8)  |
+        	 ((unsigned char)charArray[3]);
 }
 
 

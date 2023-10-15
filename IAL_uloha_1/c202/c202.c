@@ -72,15 +72,15 @@ void Stack_Error( int error_code ) {
  * @param stack Ukazatel na strukturu zásobníku
  */
 void Stack_Init( Stack *stack ) {
-	stack->array = malloc(STACK_SIZE * sizeof(char));	//Alokace pameti
-
-	//Kontrola alokace pameti
-	if (stack->array == NULL) {
-		fprintf(stderr, "Chyba alokace pameti.\n");
-		exit(EXIT_FAILURE);
+	//Kontrola parametru stack
+	if (stack == NULL) {
+		Stack_Error(SERR_INIT);
 	}
 
-	//Nastaveni indexu na vrchol zasobniku
+	//Alokace pameti
+	stack->array = malloc(STACK_SIZE * sizeof(char));
+
+	//Nastaveni vrcholu zasobniku
 	stack->topIndex = -1;
 }
 
@@ -94,7 +94,8 @@ void Stack_Init( Stack *stack ) {
  * @returns true v případě, že je zásobník prázdný, jinak false
  */
 bool Stack_IsEmpty( const Stack *stack ) {
-	return (stack->topIndex == -1);	//Vraci true pokud je topIndex roven -1
+	//Vraci true pokud je topIndex roven -1
+	return (stack->topIndex == -1);
 }
 
 /**
@@ -110,7 +111,8 @@ bool Stack_IsEmpty( const Stack *stack ) {
  * @returns true v případě, že je zásobník plný, jinak false
  */
 bool Stack_IsFull( const Stack *stack ) {
-	return (stack->topIndex == (STACK_SIZE - 1));	//Vraci true pokud je topIndex roven STACK_SIZE - 1, protoze indexujeme od nuly
+	//Vraci true pokud je topIndex roven STACK_SIZE - 1, protoze indexujeme od nuly
+	return (stack->topIndex == (STACK_SIZE - 1));
 }
 
 /**
@@ -126,8 +128,10 @@ bool Stack_IsFull( const Stack *stack ) {
  * @param dataPtr Ukazatel na cílovou proměnnou
  */
 void Stack_Top( const Stack *stack, char *dataPtr ) {
-	if (Stack_IsEmpty(stack)) Stack_Error(SERR_TOP); //Overi, ze zasobnik neni prazdny
+	//Overi, ze zasobnik neni prazdny
+	if (Stack_IsEmpty(stack)) Stack_Error(SERR_TOP);
 
+	//Do promenne dataPtr zapise hodnotu z vrcholu zasobniku, aniz by ji odstranila
 	*dataPtr = stack->array[stack->topIndex];
 }
 
@@ -145,7 +149,8 @@ void Stack_Top( const Stack *stack, char *dataPtr ) {
  * @param stack Ukazatel na inicializovanou strukturu zásobníku
  */
 void Stack_Pop( Stack *stack ) {
-	if (!Stack_IsEmpty(stack)) stack->topIndex--;	//Pokud zasobnik neni prazdny, tak dekrementuje index ukazatele na vrchol zasobniku
+	//Pokud zasobnik neni prazdny, dojde k dekrementaci indexu na vrchol zasobniku
+	if (!Stack_IsEmpty(stack)) stack->topIndex--;
 }
 
 
@@ -160,9 +165,11 @@ void Stack_Pop( Stack *stack ) {
  * @param data Znak k vložení
  */
 void Stack_Push( Stack *stack, char data ) {
-	if (Stack_IsFull(stack)) Stack_Error(SERR_PUSH);	//Overi ze zasobnik neni plny
+	//Overi ze zasobnik neni plny
+	if (Stack_IsFull(stack)) Stack_Error(SERR_PUSH);
 
-	stack->array[++stack->topIndex] = data;	//Nejprve inkrementuje hodnotu vrcholu zasobniku a pote na ni priradi data
+	//Nejprve inkrementuje hodnotu vrcholu zasobniku a pote na ni priradi data
+	stack->array[++stack->topIndex] = data;
 }
 
 
@@ -173,6 +180,7 @@ void Stack_Push( Stack *stack, char data ) {
  * @param stack Ukazatel na inicializovanou strukturu zásobníku
  */
 void Stack_Dispose( Stack *stack ) {
+	//Uvolni alokovanou pamet pro zasobnik, nastavi prazdne pole a ukazatel na vrchol nastavi na -1
 	free(stack->array);
 	stack->array = NULL;
 	stack->topIndex = -1;
