@@ -54,16 +54,13 @@ bool solved;
  * @param postfixExpressionLength Ukazatel na aktuální délku výsledného postfixového výrazu
  */
 void untilLeftPar( Stack *stack, char *postfixExpression, unsigned *postfixExpressionLength ) {
-	if (Stack_IsEmpty(&stack)) {
-		return 0;
-	}
 	char topChar = ')';
-	Stack_Pop(&stack);
-	while (topChar != '(')
-	{
-		Stack_Top(&stack, &topChar);
-
-		Stack_Pop(&stack);
+	Stack_Top(stack, &topChar);
+	while (topChar != '(') {
+		Stack_Pop(stack);
+		postfixExpression[*postfixExpressionLength] = topChar;
+		(*postfixExpressionLength)++;
+		Stack_Top(stack, &topChar);
 	}
 }
 
@@ -86,20 +83,19 @@ void untilLeftPar( Stack *stack, char *postfixExpression, unsigned *postfixExpre
 void doOperation( Stack *stack, char c, char *postfixExpression, unsigned *postfixExpressionLength ) {
 	char topChar;
 	bool topCharPrio = false, currCharPrio = false;
-	Stack_Top(&stack, &topChar);
+	Stack_Top(stack, &topChar);
 	if (topChar == '*' || topChar == '/') {
 		topCharPrio = true;
 	}
 	if (c == '*' || c == '/') {
 		currCharPrio = true;
 	}
-	while (!(Stack_IsEmpty(&stack) || topChar == '(' || currCharPrio > topCharPrio))
-	{
+	while (!(Stack_IsEmpty(stack) || topChar == '(' || currCharPrio > topCharPrio)) {
 		postfixExpression[*postfixExpressionLength] = topChar;
-		*postfixExpressionLength++;
-		Stack_Pop(&stack);
+		(*postfixExpressionLength)++;
+		Stack_Pop(stack);
 
-		Stack_Top(&stack, &topChar);
+		Stack_Top(stack, &topChar);
 		if (topChar == '*' || topChar == '/') {
 			topCharPrio = true;
 		}
@@ -107,7 +103,7 @@ void doOperation( Stack *stack, char c, char *postfixExpression, unsigned *postf
 			topCharPrio = false;
 		}
 	}
-	Stack_Push(&stack, c);
+	Stack_Push(stack, c);
 }
 
 /**
@@ -159,7 +155,8 @@ void doOperation( Stack *stack, char c, char *postfixExpression, unsigned *postf
  * @returns znakový řetězec obsahující výsledný postfixový výraz
  */
 char *infix2postfix( const char *infixExpression ) {
-	int i = 0, postfixExpressionLen = 0;
+	int i = 0;
+	unsigned postfixExpressionLen = 0;
 	Stack stack;
 	Stack_Init(&stack);
 	char *postfixExpression = (char *)malloc(MAX_LEN * sizeof(char));	//Alokace pameti pro vystupny retezec
@@ -169,7 +166,7 @@ char *infix2postfix( const char *infixExpression ) {
 	}
 
 	//While cyklus pro iteraci skrze vstupni retezec
-	while (infixExpression[i] != NULL) {
+	while (infixExpression[i] != '\0') {
 		char currChar = infixExpression[i];
 		//If statement rozhoduje o dalsim postupu prevodu dle aktualniho znaku na vstupu, viz. studijni opora str. 61
 		if (currChar == '+' || currChar == '-' || currChar == '*' || currChar == '/') {
@@ -186,9 +183,12 @@ char *infix2postfix( const char *infixExpression ) {
 			untilLeftPar(&stack, postfixExpression, &postfixExpressionLen);
 		}
 		else if (currChar == '=') {
-
+			untilLeftPar(&stack, postfixExpression, &postfixExpressionLen);
+			postfixExpression[postfixExpressionLen] = '=';
 		}
-	}	
+	}
+	Stack_Dispose(&stack);
+	return postfixExpression;	
 }
 
 
