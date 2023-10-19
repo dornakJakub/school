@@ -75,11 +75,16 @@ void Stack_Init( Stack *stack ) {
 	//Kontrola parametru stack
 	if (stack == NULL) {
 		Stack_Error(SERR_INIT);
+		return;
 	}
 
 	//Alokace pameti
 	stack->array = malloc(STACK_SIZE * sizeof(char));
 
+	if (stack->array == NULL) {
+		Stack_Error(SERR_INIT);
+		return;
+	}
 	//Nastaveni vrcholu zasobniku
 	stack->topIndex = -1;
 }
