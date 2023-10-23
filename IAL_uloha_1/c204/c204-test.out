@@ -7,12 +7,10 @@ Expected postfix: aB+=
 Conversion match: OK
 
 
-
 [test_02] Digits with minus operator
 Provided infix  : 0-1=
 Expected postfix: 01-=
 Conversion match: OK
-
 
 
 [test_03] Mixed operands with multiplication operator
@@ -21,12 +19,10 @@ Expected postfix: a0*=
 Conversion match: OK
 
 
-
 [test_04] Mixed operands with division operator
 Provided infix  : B/1=
 Expected postfix: B1/=
 Conversion match: OK
-
 
 
 [test_05] Simple parentheses support
@@ -35,12 +31,10 @@ Expected postfix: ab+=
 Conversion match: OK
 
 
-
 [test_06] Expression evaluation from the left to the right
 Provided infix  : a+b+c=
 Expected postfix: ab+c+=
 Conversion match: OK
-
 
 
 [test_07] Minus operator does not have higher priority than plus
@@ -49,12 +43,10 @@ Expected postfix: ab+c-=
 Conversion match: OK
 
 
-
 [test_08] Plus operator does not have higher priority than minus
 Provided infix  : A-B+C=
 Expected postfix: AB-C+=
 Conversion match: OK
-
 
 
 [test_09] Plus operator does not have higher priority than minus
@@ -63,12 +55,10 @@ Expected postfix: 12*3/=
 Conversion match: OK
 
 
-
 [test_10] Parentheses change operator priority
 Provided infix  : A+(B-c)=
 Expected postfix: ABc-+=
 Conversion match: OK
-
 
 
 [test_eval_01] Evaluate expression

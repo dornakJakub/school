@@ -82,6 +82,12 @@ void untilLeftPar( Stack *stack, char *postfixExpression, unsigned *postfixExpre
 //  * @param postfixExpressionLength Ukazatel na aktuální délku výsledného postfixového výrazu
 //  */
 void doOperation( Stack *stack, char c, char *postfixExpression, unsigned *postfixExpressionLength ) {
+	/**
+	 * Nastavi a porovna prioritu operatoru na vrcholu zasobniku a toho ulozeneho v char C
+	 * Dle toho bud C ulozi na vrchol zasobniku, nebo pridava operator z vrcholu zasobniku
+	 * na konec retezce postFixExpresion, dokud na vrcholu zasobniku neni oprator s mensi prioritou
+	 * nebo neni uplne prazdny
+	 */
 	char topChar;
 	bool topCharPrio = false, currCharPrio = false;
 	if (Stack_IsEmpty(stack)) {
@@ -196,16 +202,18 @@ char *infix2postfix( const char *infixExpression ) {
 		}
 		i++;
 	}
-
+	//Konecne vyprazdneni zasobniku
 	while (!(Stack_IsEmpty(&stack))) {
 		Stack_Top(&stack, &currChar);
 		Stack_Pop(&stack);
 		postfixExpression[postfixExpressionLen] = currChar;
 		postfixExpressionLen++;
 	}
+	//Na konec vyrazu prida '=' a koncovy znak
 	postfixExpression[postfixExpressionLen] = '=';
 	postfixExpression[postfixExpressionLen + 1] = '\0';
 
+	//uvolneni alokovane pameti zasobniku
 	Stack_Dispose(&stack);
 	return postfixExpression;	
 }
@@ -244,6 +252,7 @@ void expr_value_push( Stack *stack, int value ) {
 //  *   výsledné celočíselné hodnoty z vrcholu zásobníku
 //  */
 void expr_value_pop( Stack *stack, int *value ) {
+	//Ze zasobniku nacte ctyri chary reprezentujici int hodnotu, kterou zpetne ziska pomoci bitovych posuvu
 	char charArray[4];
 
 	for (int i = 3; i >= 0; i--) {
@@ -336,6 +345,7 @@ bool eval( const char *infixExpression, VariableValue variableValues[], int vari
 		}
 		i++;
 	}
+	//Uvolneni alokovane pameti
 	Stack_Dispose(&stack);
 	free(postfixExpression);
 	return true;
