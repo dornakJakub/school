@@ -1,0 +1,312 @@
+/usr/local/share/ghdl/bin/ghdl -i --ieee=synopsys -fexplicit --workdir=build --work=work ../src/cpu.vhd
+/usr/local/share/ghdl/bin/ghdl -m --ieee=synopsys -fexplicit --workdir=build -Pbuild --work=work cpu
+/usr/local/share/ghdl/bin/ghdl -r --ieee=synopsys -fexplicit --workdir=build -Pbuild --work=work cpu --vpi=/homes/eva/xd/xdorna06/inp23-projekt1/env/lib/python3.8/site-packages/cocotb/libs/libcocotbvpi_ghdl.so
+     -.--ns INFO     gpi                                ..mbed/gpi_embed.cpp:109  in set_program_name_in_venv        Using Python virtual environment interpreter at /homes/eva/xd/xdorna06/inp23-projekt1/env/bin/python
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:101  in gpi_print_registered_impl       VPI registered
+     0.00ns INFO     cocotb                             Running on GHDL version 2.0.0 (tarball) [Dunoon edition]
+     0.00ns INFO     cocotb                             Running tests with cocotb v1.7.1 from /homes/eva/xd/xdorna06/inp23-projekt1/env/lib/python3.8/site-packages/cocotb
+     0.00ns INFO     cocotb                             Seeding Python random module with 1701125301
+     0.00ns INFO     cocotb.hexdigest                   lib: db913e6f9a8b6fd10e0c8ec59ef3e5fa
+     0.00ns INFO     cocotb.regression                  Found test cpu.test_reset
+     0.00ns INFO     cocotb.regression                  Found test cpu.test_init
+     0.00ns INFO     cocotb.regression                  Found test cpu.test_increment
+     0.00ns INFO     cocotb.regression                  Found test cpu.test_decrement
+     0.00ns INFO     cocotb.regression                  Found test cpu.test_move
+     0.00ns INFO     cocotb.regression                  Found test cpu.test_print
+     0.00ns INFO     cocotb.regression                  Found test cpu.test_input
+     0.00ns INFO     cocotb.regression                  Found test cpu.test_while_loop
+     0.00ns INFO     cocotb.regression                  Found test cpu.test_break
+     0.00ns INFO     cocotb.regression                  Found test cpu.test_login_xdorna06
+     0.00ns INFO     cocotb.regression                  running test_reset (1/10)
+     0.00ns INFO     cocotb.hexdigest                   test: 87772a352f9d8b098308f703c47e813c
+../../src/synopsys/std_logic_arith.vhdl:255:21:@10ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@10ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@10ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@10ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@20ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@20ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@20ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@20ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@30ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@30ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@30ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@30ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@40ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@40ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@40ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@40ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@50ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@50ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@50ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@50ns:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+    51.00ns INFO     cocotb.regression                  test_reset passed
+    51.00ns INFO     cocotb.regression                  running test_init (2/10)
+                                                          Procesor initialization test
+    51.00ns INFO     cocotb.hexdigest                   test: 33dd81248ca671dce91fcd76c1ca6ca7
+    52.00ns INFO     cocotb.hexdigest                   code: 420cd9f16e90b08dbdf5195fdd9d0f62 len: 1
+../../src/synopsys/std_logic_arith.vhdl:255:21:@61000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@61000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@61000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@61000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@71000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@71000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@71000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@71000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@81000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@81000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@81000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@81000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@91000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@91000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@91000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@91000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@101000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@101000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@101000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@101000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@111000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@111000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@111000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@111000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@121000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@121000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@121000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@121000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@131000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@131000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@131000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@131000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@141000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@141000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@141000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@141000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@151000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@151000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@151000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@151000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@161000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@161000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@161000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@161000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@171000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@171000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@171000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@171000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@181000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@181000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@181000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@181000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+   191.00ns INFO     cocotb.hexdigest                   result: 420cd9f16e90b08dbdf5195fdd9d0f62
+../../src/synopsys/std_logic_arith.vhdl:255:21:@191000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@191000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@191000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@191000001fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+   191.00ns INFO     cocotb.regression                  test_init passed
+   191.00ns INFO     cocotb.regression                  running test_increment (3/10)
+                                                          Increment value of the first memory cell, i.e. *ptr++
+   191.00ns INFO     cocotb.hexdigest                   test: e439775560368b4c28f6794fd7461eae
+   192.00ns INFO     cocotb.hexdigest                   code: 83fdb8859bf9b7036a839b918e308b60 len: 4
+../../src/synopsys/std_logic_arith.vhdl:255:21:@201000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@201000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@201000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@201000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@211000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@211000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@211000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@211000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@221000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@221000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@221000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@221000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@231000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@231000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@231000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@231000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@241000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@241000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@241000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@241000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@251000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@251000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@251000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@251000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@261000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@261000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@261000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@261000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@271000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@271000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@271000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@271000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@281000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@281000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@281000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@281000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@291000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@291000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@291000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@291000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@301000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@301000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@301000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@301000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@311000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@311000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@311000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@311000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@321000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@321000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@321000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@321000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@331000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@331000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@331000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@331000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@341000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@341000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@341000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@341000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@351000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@351000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@351000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@351000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@361000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@361000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@361000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@361000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@371000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@371000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@371000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+../../src/synopsys/std_logic_arith.vhdl:255:21:@371000002fs:(assertion warning): There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+   381.00ns WARNING  cocotb.cpu_tb                      [RAM module] clock ignored due to the exception Unresolvable bit in binary string: 'U'
+   561.00ns INFO     cocotb.hexdigest                   result: 8dd86d93486956246a09659343553276
+   561.00ns INFO     cocotb.regression                  test_increment failed
+                                                        Traceback (most recent call last):
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 276, in fff
+                                                            return await fg(dut)
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/cpu.py", line 39, in test_increment
+                                                            assert mem[4] == 3
+                                                        AssertionError: assert 0 == 3
+   561.00ns INFO     cocotb.regression                  running test_decrement (4/10)
+                                                          Decrement value of the first memory cell, i.e. *ptr--
+   561.00ns INFO     cocotb.hexdigest                   test: aefae26c0b383b030434c566dacd0ce4
+   562.00ns INFO     cocotb.hexdigest                   code: 0772f54a199d95c25fff832f480c9d84 len: 4
+  1616.00ns INFO     cocotb.regression                  test_decrement failed
+                                                        Traceback (most recent call last):
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 276, in fff
+                                                            return await fg(dut)
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/cpu.py", line 45, in test_decrement
+                                                            instcnt, mem, _ = await run_program(dut, '---@\3')
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 262, in run_program
+                                                            proglen, mem = await with_timeout(meminst, timeout_ns, 'ns')
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/env/lib/python3.8/site-packages/cocotb/triggers.py", line 1013, in with_timeout
+                                                            raise cocotb.result.SimTimeoutError
+                                                        cocotb.result.SimTimeoutError
+  1616.00ns INFO     cocotb.regression                  running test_move (5/10)
+                                                          Move the pointer to the next cell and increment its value
+  1616.00ns INFO     cocotb.hexdigest                   test: 90a64a7e5af001237f6139f00d30afd1
+  1617.00ns INFO     cocotb.hexdigest                   code: 7c1cd3f96fc2c2ff2e089c27cfda24b6 len: 3
+  2671.00ns INFO     cocotb.regression                  test_move failed
+                                                        Traceback (most recent call last):
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 276, in fff
+                                                            return await fg(dut)
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/cpu.py", line 53, in test_move
+                                                            instcnt, mem, _ = await run_program(dut, '>+@')
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 262, in run_program
+                                                            proglen, mem = await with_timeout(meminst, timeout_ns, 'ns')
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/env/lib/python3.8/site-packages/cocotb/triggers.py", line 1013, in with_timeout
+                                                            raise cocotb.result.SimTimeoutError
+                                                        cocotb.result.SimTimeoutError
+  2671.00ns INFO     cocotb.regression                  running test_print (6/10)
+                                                          Print data to the output, i.e. putchar(*ptr)
+  2671.00ns INFO     cocotb.hexdigest                   test: 5a46c001219703faaa698626bc6387db
+  2672.00ns INFO     cocotb.hexdigest                   code: b265746fe722436c7a1a1d8de199b058 len: 4
+  6226.00ns INFO     cocotb.regression                  test_print failed
+                                                        Traceback (most recent call last):
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 276, in fff
+                                                            return await fg(dut)
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/cpu.py", line 61, in test_print
+                                                            instcnt, mem, lcd = await run_program(dut, '...@012', timeout_ns=LCD_WAIT_TIME*5 + 1000)
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 262, in run_program
+                                                            proglen, mem = await with_timeout(meminst, timeout_ns, 'ns')
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/env/lib/python3.8/site-packages/cocotb/triggers.py", line 1013, in with_timeout
+                                                            raise cocotb.result.SimTimeoutError
+                                                        cocotb.result.SimTimeoutError
+  6226.00ns INFO     cocotb.regression                  running test_input (7/10)
+                                                          Load data from the input, i.e. *ptr=getchar()
+  6226.00ns INFO     cocotb.hexdigest                   test: 451c312bf264f58da175727a2382e7e5
+  6227.00ns INFO     cocotb.hexdigest                   code: d3fac245532f03964cd19007b2032729 len: 4
+ 11381.00ns INFO     cocotb.regression                  test_input failed
+                                                        Traceback (most recent call last):
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 276, in fff
+                                                            return await fg(dut)
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/cpu.py", line 67, in test_input
+                                                            instcnt, mem, lcd = await run_program(dut, ',,,@', kb_data='312', timeout_ns=(KB_WAIT_TIME+LCD_WAIT_TIME)*5 + 100)
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 262, in run_program
+                                                            proglen, mem = await with_timeout(meminst, timeout_ns, 'ns')
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/env/lib/python3.8/site-packages/cocotb/triggers.py", line 1013, in with_timeout
+                                                            raise cocotb.result.SimTimeoutError
+                                                        cocotb.result.SimTimeoutError
+ 11381.00ns INFO     cocotb.regression                  running test_while_loop (8/10)
+                                                          Simple while loop test
+ 11381.00ns INFO     cocotb.hexdigest                   test: 091d1b7ac3ab5227c14c081b45286e80
+ 11382.00ns INFO     cocotb.hexdigest                   code: dc8bee53ab9c57eaa957fd0fe2002e38 len: 5
+ 16436.00ns INFO     cocotb.regression                  test_while_loop failed
+                                                        Traceback (most recent call last):
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 276, in fff
+                                                            return await fg(dut)
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/cpu.py", line 77, in test_while_loop
+                                                            instcnt, mem, lcd = await run_program(dut, '[.-]@\3', timeout_ns = LCD_WAIT_TIME*10)
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 262, in run_program
+                                                            proglen, mem = await with_timeout(meminst, timeout_ns, 'ns')
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/env/lib/python3.8/site-packages/cocotb/triggers.py", line 1013, in with_timeout
+                                                            raise cocotb.result.SimTimeoutError
+                                                        cocotb.result.SimTimeoutError
+ 16436.00ns INFO     cocotb.regression                  running test_break (9/10)
+                                                          Simple break test
+ 16436.00ns INFO     cocotb.hexdigest                   test: ba2eca596906597be47ecb6c53411066
+ 16437.00ns INFO     cocotb.hexdigest                   code: 2ff92dcde40bfd62c304d85b3c307437 len: 6
+ 21491.00ns INFO     cocotb.regression                  test_break failed
+                                                        Traceback (most recent call last):
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 276, in fff
+                                                            return await fg(dut)
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/cpu.py", line 85, in test_break
+                                                            instcnt, mem, lcd = await run_program(dut, '[-~+]@\1', timeout_ns = LCD_WAIT_TIME*10)
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 262, in run_program
+                                                            proglen, mem = await with_timeout(meminst, timeout_ns, 'ns')
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/env/lib/python3.8/site-packages/cocotb/triggers.py", line 1013, in with_timeout
+                                                            raise cocotb.result.SimTimeoutError
+                                                        cocotb.result.SimTimeoutError
+ 21491.00ns INFO     cocotb.regression                  running test_login_xdorna06 (10/10)
+                                                          Executes program in login.b file
+ 21491.00ns INFO     cocotb.hexdigest                   test: ec8d929070ca6d063359e4d30d10884a
+ 21492.00ns INFO     cocotb.hexdigest                   code: 58000a75a1a5706f6abb61704850874b len: 899
+271546.00ns INFO     cocotb.regression                  test_login_xdorna06 failed
+                                                        Traceback (most recent call last):
+                                                          File "<makefun-gen-1>", line 2, in test_login_xdorna06
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 272, in ff
+                                                            return await fg(dut, uid)
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/cpu.py", line 96, in test_login
+                                                            instcnt, mem, lcd = await run_program(dut, prog, timeout_ns = 250_000)
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/zadani/test/scripts/cpu_lib.py", line 262, in run_program
+                                                            proglen, mem = await with_timeout(meminst, timeout_ns, 'ns')
+                                                          File "/homes/eva/xd/xdorna06/inp23-projekt1/env/lib/python3.8/site-packages/cocotb/triggers.py", line 1013, in with_timeout
+                                                            raise cocotb.result.SimTimeoutError
+                                                        cocotb.result.SimTimeoutError
+271546.00ns INFO     cocotb.regression                  ***************************************************************************************
+                                                        ** TEST                           STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        ***************************************************************************************
+                                                        ** cpu.test_reset                  PASS          51.00           0.00      12560.01  **
+                                                        ** cpu.test_init                   PASS         140.00           0.01      11725.06  **
+                                                        ** cpu.test_increment              FAIL         370.00           0.02      16779.94  **
+                                                        ** cpu.test_decrement              FAIL        1055.00           0.05      19986.68  **
+                                                        ** cpu.test_move                   FAIL        1055.00           0.05      23056.91  **
+                                                        ** cpu.test_print                  FAIL        3555.00           0.18      19792.57  **
+                                                        ** cpu.test_input                  FAIL        5155.00           0.28      18338.23  **
+                                                        ** cpu.test_while_loop             FAIL        5055.00           0.21      23636.53  **
+                                                        ** cpu.test_break                  FAIL        5055.00           0.19      26464.12  **
+                                                        ** cpu.test_login_xdorna06         FAIL      250055.00          12.59      19857.05  **
+                                                        ***************************************************************************************
+                                                        ** TESTS=10 PASS=2 FAIL=8 SKIP=0             271546.00          13.93      19498.19  **
+                                                        ***************************************************************************************
+                                                        
