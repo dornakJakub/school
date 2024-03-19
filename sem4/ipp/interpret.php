@@ -2,6 +2,10 @@
 #argument parsing
 $options = getopt(null, ['source:', 'input:', 'help']);
 
+if ($argc < 2) {
+    exit(10);
+}
+
 //Check for --help argument
 if (isset($options['help'])) {
     if ($argc > 2) {
@@ -19,7 +23,7 @@ if (!isset($options['source']) && !isset($options['input'])) {
 if (isset($options['source'])) {
     $sourceFile = $options['source'];
     if (!file_exists($sourceFile)) {
-        die("File $sourceFile does not exist.\n");
+        exit(12);
     }
     echo "Processing source file: $sourceFile\n";
 }
@@ -27,9 +31,8 @@ if (isset($options['source'])) {
 if (isset($options['input'])) {
     $inputFile = $options['input'];
     if (!file_exists($inputFile)) {
-        die("File $inputFile does not exist.\n");
+        exit(11);
     }
     echo "Processing input file: $inputFile\n";
 }
-//TODO: add exit codes
 ?>
