@@ -5,3 +5,9 @@ test.*
 .vscode
 sem3
 sem4
+myenv
+lectures
+tests
+*.o
+*.pdf
+main
