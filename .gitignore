@@ -11,3 +11,4 @@ tests
 *.o
 *.pdf
 main
+**/sem4/
