@@ -6,9 +6,9 @@ test.*
 sem3
 sem4
 myenv
+venv
 lectures
 tests
 *.o
 *.pdf
 main
-**/sem4/
