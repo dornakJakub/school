@@ -1,0 +1,112 @@
+#!/bin/bash
+
+BOOTDIR="/home/jakubdornak/school/academic_comeback/IOS/proj1/entries"
+BOOTDIRFILES=$BOOTDIR+="/*"
+
+# Lists all entries in the bootloader
+# If the -f flag is present, the entries are sorted
+list_entries() {
+    entries=()
+    for file in $BOOTDIRFILES; do
+        title=$(awk '$1 == "title" { $1=""; print substr($0, 2) }' "$file")
+        version=$(awk '$1 == "version" { $1=""; print substr($0, 2) }' "$file")
+        linux=$(awk '$1 == "linux" { $1=""; print substr($0, 2) }' "$file")
+        entries+=("$title ($version, $linux)")
+    done
+
+    if [ "$1" == "-f" ]; then
+        sorted_entries=()
+        mapfile -t sorted_entries < <(printf "%s\n" "${entries[@]}" | sort)
+        entries=("${sorted_entries[@]}")
+    fi
+    
+
+    for item in "${entries[@]}"; do
+        echo "$item"
+    done
+}
+
+# Removes all entries, which title matches the given regex
+remove() {
+    for entry in $BOOTDIRFILES; do
+        title=$(awk '$1 == "title" { $1=""; print substr($0, 2) }' "$entry")
+        if echo "$title" | grep -Eq "$1"; then
+            rm "$entry"
+            echo "Entry $title was succesfully removed."
+        fi
+    done
+}
+
+# Prints the default entry
+# -f flag prints the path to the default entry
+show_default() {
+    # Checks if there is a default entry
+    entry=$(grep -rl "vutfit_default y" "$BOOTDIR")
+    if [ -z "$entry" ]; then
+        echo "Default entry was not found."
+        exit 1
+    fi
+
+    if [ "$1" == "-f" ]; then
+        echo "$entry"
+    else
+        cat "$entry"
+    fi
+
+    exit 0
+}
+
+# Sets the entry on path as the default entry
+make_default() {
+    # Check if entry specified by the path exists
+    if [ ! -f "$1" ]; then
+        echo "Entry $1 does not exist."
+        exit 0
+    fi
+
+    # Check if there is already a default entry and set it to false
+    old_default=$(grep -rl "vutfit_default y" "$BOOTDIR")
+    if [ -n "$old_default" ]; then
+        sed -i 's/vutfit_default y/vutfit_default n/' "$old_default"
+    fi
+
+    # Set the new default entry
+    if grep -q '^vutfit_default' "$1"; then
+        sed -i 's/vutfit_default n/vutfit_default y/' "$1"
+    else 
+        echo "vutfit_default y" >> "$1"
+    fi
+    exit 0
+}
+
+while getopts "b:" opt; do
+    case $opt in
+        b)
+            BOOTDIR=$OPTARG
+            BOOTDIRFILES=$BOOTDIR"/*"
+            ;;
+        \?)
+    esac
+done
+
+shift $((OPTIND - 1))
+
+# Branching based on the script parameter
+case "$1" in
+    list)
+        list_entries "$2"
+        ;;
+    remove)
+        remove "$2"
+        ;;
+    show-default)
+        show_default "$2"
+        ;;
+    make-default)
+        make_default "$2"
+        ;;
+    *)
+        echo "Použití: $0 {list|add|remove|default} [parametr]"
+        exit 1
+        ;;
+esac

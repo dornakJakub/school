@@ -12,3 +12,5 @@ tests
 *.o
 *.pdf
 main
+entries
+unittest
