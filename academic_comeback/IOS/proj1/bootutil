@@ -4,26 +4,154 @@ BOOTDIR="/home/jakubdornak/school/academic_comeback/IOS/proj1/entries"
 BOOTDIRFILES=$BOOTDIR+="/*"
 
 # Lists all entries in the bootloader
-# If the -f flag is present, the entries are sorted
-list_entries() {
+# -f the entries are sorted in ascending order by the file name
+# -s the entries are sorted in ascending order by the sort-key
+# -k <kernel_regex> lists only entries matching the given regex in the linux line
+# -t <title_regex> lists only entries matching the given regex in the title line
+list() {
+    sorted_files=()
+    if [ "$1" == "-f" ]; then
+        mapfile -t sorted_files < <(find "$BOOTDIR" -type f | sort)
+    elif [ "$1" == "-s" ]; then
+        mapfile -t sorted_files < <(
+            find "$BOOTDIR" -maxdepth 1 -type f | while read -r file; do
+            value=$(awk '$1 == "sort-key" {print substr($0, index($0,$2))}' "$file")
+            echo "$value $file"
+            done | sort -k1,1 | cut -d' ' -f2-
+        )
+    elif [ "$1" == "-k" ]; then
+        mapfile -t sorted_files < <(awk -v pattern="$2" '$1 == "linux" && $2 ~ pattern {print FILENAME}' "$BOOTDIR"/*)
+    elif [ "$1" == "-t" ]; then
+        mapfile -t sorted_files < <(awk -v pattern="$2" '$1 == "title" && $2 ~ pattern {print FILENAME}' "$BOOTDIR"/*)
+    else
+        mapfile -t sorted_files < <(find "$BOOTDIR" -type f)
+    fi
+
     entries=()
-    for file in $BOOTDIRFILES; do
+    for file in "${sorted_files[@]}"; do
         title=$(awk '$1 == "title" { $1=""; print substr($0, 2) }' "$file")
         version=$(awk '$1 == "version" { $1=""; print substr($0, 2) }' "$file")
         linux=$(awk '$1 == "linux" { $1=""; print substr($0, 2) }' "$file")
         entries+=("$title ($version, $linux)")
     done
 
-    if [ "$1" == "-f" ]; then
-        sorted_entries=()
-        mapfile -t sorted_entries < <(printf "%s\n" "${entries[@]}" | sort)
-        entries=("${sorted_entries[@]}")
-    fi
-    
-
     for item in "${entries[@]}"; do
         echo "$item"
     done
+}
+
+# Duplicates an entry
+# -k <kernel> modifies the kernel path
+# -i <initrd> modifies the initrd path
+# -t <title> modifies the title
+# -a <args> adds the given argument to the options line
+# -r <args> removes the given argument from the options line
+# -d <destination> sets the destination of the new entry
+# --make-default sets the new entry as the default entry
+duplicate() {
+    OPTIND=1
+    PARSED_OPTIONS=$(getopt -o "k:i:t:a:r:d:" --long "make-default" -- "$@") || exit 1
+    eval set -- "$PARSED_OPTIONS"
+
+    # Store the arguments in variables
+    while true; do
+        case "$1" in
+            -k) kernel="$2"; shift 2 ;;
+            -i) initrd="$2"; shift 2 ;;
+            -t) title="$2"; shift 2 ;;
+            -a) cmdline_args+=("a$2"); shift 2 ;;
+            -r) cmdline_args+=("r$2"); shift 2 ;;
+            -d) destination="$2"; shift 2 ;;
+            --make-default) default=true; shift ;;
+            --) shift; break ;;
+            *) echo "Invalid option: $1"; exit 1 ;;
+        esac
+    done
+
+    # Create new copy of the entry
+    if [[ -f "$1" ]]; then
+        original="$1"
+        shift
+    else
+        original=$(grep -rl "vutfit_default y" "$BOOTDIR")
+        if [ -z "$original" ]; then
+            echo "Default entry was not found."
+            exit 1
+        fi
+    fi
+
+    if [[ -n "$destination" ]]; then
+        copy="$destination"
+    else
+        base="${original%.*}"
+        ext="${original##*.}"
+        infix="-copy-"
+        copy="$base$infix.$ext"
+
+        counter=1
+        while [[ -e "$copy" ]]; do
+            copy="$base$infix$counter.$ext"
+            ((counter++))
+        done
+    fi
+
+    cp "$original" "$copy"
+
+    sed -i 's/vutfit_default y/vutfit_default n/' "$copy"
+
+    # Modify the entry
+    if [[ -n "$kernel" ]]; then
+        if grep -q '^linux' "$copy"; then
+            escaped_kernel=$(echo "$kernel" | sed 's/\//\\\//g')
+            sed -i "s/^linux .*/linux $escaped_kernel/" "$copy"
+        else 
+            echo "linux $kernel" >> "$copy"
+        fi
+    fi
+
+    if [[ -n "$initrd" ]]; then
+        if grep -q '^initrd' "$copy"; then
+            escaped_initrd=$(echo "$initrd" | sed 's/\//\\\//g')
+            sed -i "s/^initrd .*/initrd $escaped_initrd/" "$copy"
+        else 
+            echo "initrd $initrd" >> "$copy"
+        fi
+    fi
+
+    if [[ -n "$title" ]]; then
+        if grep -q '^title' "$copy"; then
+            escaped_title=$(echo "$title" | sed 's/\//\\\//g')
+            sed -i "s/^title .*/title $escaped_title/" "$copy"
+        else 
+            echo "title $title" >> "$copy"
+        fi
+    fi
+
+    for param in "${cmdline_args[@]}"; do
+        flag="${param:0:1}"
+        arg="${param:1}"
+        if [[ "$flag" == "a" ]]; then
+            if grep -q '^options' "$copy"; then
+                escaped_arg=$(echo "$arg" | sed 's/\//\\\//g')
+                if grep -q "$arg" "$copy"; then
+                    return
+                fi
+                sed -i "s/^options .*/& $escaped_arg/" "$copy"
+            else 
+                echo "options $arg" >> "$copy"
+            fi
+            line=$(grep '^options' file.txt)
+            if [[ "$line" =~ $arg ]]; then
+                return
+            fi
+        elif [[ "$flag" == "r" ]]; then
+            sed -i "/^options/ s/$arg//g" "$copy"
+        fi
+    done
+
+    if [[ -n "$default" ]]; then
+        make_default "$copy"
+    fi
 }
 
 # Removes all entries, which title matches the given regex
@@ -40,7 +168,6 @@ remove() {
 # Prints the default entry
 # -f flag prints the path to the default entry
 show_default() {
-    # Checks if there is a default entry
     entry=$(grep -rl "vutfit_default y" "$BOOTDIR")
     if [ -z "$entry" ]; then
         echo "Default entry was not found."
@@ -58,19 +185,16 @@ show_default() {
 
 # Sets the entry on path as the default entry
 make_default() {
-    # Check if entry specified by the path exists
     if [ ! -f "$1" ]; then
         echo "Entry $1 does not exist."
         exit 0
     fi
 
-    # Check if there is already a default entry and set it to false
     old_default=$(grep -rl "vutfit_default y" "$BOOTDIR")
     if [ -n "$old_default" ]; then
         sed -i 's/vutfit_default y/vutfit_default n/' "$old_default"
     fi
 
-    # Set the new default entry
     if grep -q '^vutfit_default' "$1"; then
         sed -i 's/vutfit_default n/vutfit_default y/' "$1"
     else 
@@ -79,6 +203,7 @@ make_default() {
     exit 0
 }
 
+# Sets entries directory
 while getopts "b:" opt; do
     case $opt in
         b)
@@ -94,7 +219,7 @@ shift $((OPTIND - 1))
 # Branching based on the script parameter
 case "$1" in
     list)
-        list_entries "$2"
+        list "$2" "$3"
         ;;
     remove)
         remove "$2"
@@ -105,8 +230,12 @@ case "$1" in
     make-default)
         make_default "$2"
         ;;
+    duplicate)
+        shift
+        duplicate "$@"
+        ;;
     *)
-        echo "Použití: $0 {list|add|remove|default} [parametr]"
+        echo "Unknown flag: $1"
         exit 1
         ;;
 esac
