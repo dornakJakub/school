@@ -14,3 +14,9 @@ tests
 main
 entries
 unittest
+*.out
+test_iter
+test_rec
+test
+*.phar
+proj2

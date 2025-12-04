@@ -1,7 +1,7 @@
 #!/bin/bash
 
-BOOTDIR="/home/jakubdornak/school/academic_comeback/IOS/proj1/entries"
-BOOTDIRFILES=$BOOTDIR+="/*"
+BOOTDIR="/boot/loader/entries"
+BOOTDIRFILES=$BOOTDIR"/*"
 
 # Lists all entries in the bootloader
 # -f the entries are sorted in ascending order by the file name
@@ -20,9 +20,9 @@ list() {
             done | sort -k1,1 | cut -d' ' -f2-
         )
     elif [ "$1" == "-k" ]; then
-        mapfile -t sorted_files < <(awk -v pattern="$2" '$1 == "linux" && $2 ~ pattern {print FILENAME}' "$BOOTDIR"/*)
+        mapfile -t sorted_files < <(awk -v pattern="$2" '$1 == "linux" && match($0, pattern) { $1=""; print substr($0, 2) }' "$BOOTDIR"/*)
     elif [ "$1" == "-t" ]; then
-        mapfile -t sorted_files < <(awk -v pattern="$2" '$1 == "title" && $2 ~ pattern {print FILENAME}' "$BOOTDIR"/*)
+        mapfile -t sorted_files < <(awk -v pattern="$2" '$1 == "title" && match($0, pattern) { $1=""; print substr($0, 2) }' "$BOOTDIR"/*)
     else
         mapfile -t sorted_files < <(find "$BOOTDIR" -type f)
     fi
