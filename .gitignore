@@ -19,4 +19,4 @@ test_iter
 test_rec
 test
 *.phar
-proj2
+*.jar
