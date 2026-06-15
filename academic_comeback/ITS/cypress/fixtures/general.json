@@ -1,0 +1,33 @@
+{
+    "admin": {
+        "email": "admin@example.cz",
+        "password": "admin"
+    },
+
+    "testMember": {
+        "name": "cypressTest",
+        "surname": "sur"
+    },
+
+    "testUser": {
+        "email": "test@test.com",
+        "password": "test",
+        "newPassword": "aaa",
+        "wrongPassword": "bbb",
+        "newLogin": {
+            "email": "test@test.com",
+            "password": "aaa"
+        }
+    },
+
+    "testPayment": {
+        "amount": "100",
+        "wrongAmount": "50"
+    },
+
+    "testTeam": {
+        "name": "testTeam",
+        "note": "AAA",
+        "newNote": "BBB"
+    }
+}
