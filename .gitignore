@@ -20,3 +20,4 @@ test_rec
 test
 *.phar
 *.jar
+node_modules
